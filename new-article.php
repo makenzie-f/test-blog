@@ -1,8 +1,10 @@
 <?php
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") { //not called until submit button
+require 'includes/database.php';
 
-  require 'includes/database.php';
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+  $conn = getDB();
 
   $sql = "INSERT INTO article (title, content, published_at)
           VALUES (?, ?, ?)";
