@@ -1,0 +1,292 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:300,400,500);
+
+
+* {
+  font-family: "Roboto", "Arial", "Helvetica", sans-serif;
+  margin: 0px 0px 1px;
+  line-height: 1.5;
+  color: #555;
+}
+
+body {
+
+}
+
+a {
+  text-decoration: none;
+  color: #e81c4f;
+}
+
+a:hover {
+  font-weight: 700;
+  color: #555;
+}
+
+li {
+  list-style-type: none;
+  margin: 10px;
+  padding: 5px;
+}
+
+header{
+  margin: 5px;
+  display: flex;
+  justify-content: center;
+}
+
+header h1{
+  font-size: 4em;
+}
+
+main{
+  border: 2px solid #eee;
+  margin: auto;
+  width: 550px;
+}
+
+/*
+ * Navigation
+ *
+ */
+
+.flex-box {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.flex-item {
+  display: flex;
+  padding: 0px;
+  flex-wrap: wrap;
+}
+
+nav li {
+  text-transform: uppercase;
+  font-weight: 300;
+}
+
+
+/*
+ * Main blog home page
+ *
+ */
+
+ main .flex-box{
+   display: inherit;
+   justify-content: flex-start;
+ }
+
+main .flex-item{
+  width: 250px;
+  margin: 5px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+main ul li{
+  display: inherit;
+
+}
+
+main ul li img{
+  margin: 25px;
+}
+
+main ul li article {
+  margin: 5px;
+  display: inherit;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+article h2{
+  text-transform: uppercase;
+  font-size: 2em;
+  width: 150px;
+}
+
+article p{
+  font-weight: 300;
+  font-size: 1em;
+}
+
+
+/*
+ * Log in page
+ *
+ */
+
+.login-item{
+  display: inherit;
+  flex-direction: column;
+  margin: 25px;
+  justify-content: center;
+  align-items: center;
+}
+
+
+main div h2{
+  font-size: 2em;
+  margin: auto;
+  padding: 5px;
+  display: inherit;
+  align-items: center;
+  justify-content: center;
+}
+
+main div form div {
+  margin: 9px;
+  display: inherit;
+  flex-direction: column;
+  align-items: center;
+}
+
+main div form button{
+  margin: auto;
+  width: 70px;
+}
+
+/*
+ * Admin
+ *
+ */
+
+.admin-item {
+  display: inherit;
+  flex-direction: column;
+  padding: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+main div p {
+  display: flex;
+  font-weight: 500;
+  justify-content: center;
+  align-content: center;
+}
+
+main div table {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+main div table thead tr {
+  font-size: 1.7em;
+}
+
+main div table tbody {
+  display: inherit;
+  flex-wrap: wrap;
+  margin: 15px;
+}
+
+main div table tbody tr {
+  display: inherit;
+  margin: auto;
+  margin-bottom: inherit;
+  width: 150px;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: space-around;
+  border: 2px solid #eee;
+  border-radius: 25px;
+  padding: 15px;
+}
+
+main div table tbody tr td {
+  margin: auto;
+}
+
+
+/*
+ * Add new article
+ *
+ */
+
+
+ main div form {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+ }
+
+ /*
+  * View individual article
+  *
+  */
+
+main div article h2 {
+  width: fit-content;
+  margin-bottom: 15px
+}
+
+main div article p {
+  margin: 15px;
+}
+
+.admin-link-box{
+  display: inherit;
+
+}
+
+div .admin-links {
+  display: inherit;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  border: 2px solid #eee;
+  border-radius: 25px;
+  width: 70px;
+}
+
+/*
+ * Edit article
+ *
+ */
+.edit-item{
+  display: inherit;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+
+}
+
+/*
+ * Delete article
+ *
+ */
+
+.delete-item {
+  display: inherit;
+  width: 250px;
+  margin: 5px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+
+.delete-opts {
+  padding: 6px;
+  margin:5px;
+}
+
+/*
+ * Footer
+ *
+ */
+
+ footer{
+   margin-top: 25px;
+   margin-bottom: 25px;
+   display: flex;
+   justify-content: center;
+
+ }
+
+ footer p{
+   font-weight: 300;
+   font-size: 0.5em;
+ }
