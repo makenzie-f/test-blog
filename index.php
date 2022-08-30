@@ -1,45 +1,21 @@
 <?php
 
-require 'includes/database.php';
-require 'includes/auth.php';
+require 'includes/init.php';
+$conn = require 'includes/db.php';
 
-session_start();
+$articles = Article::getAll($conn);
 
-$conn = getDB();
-
-$sql = "SELECT *
-        FROM article
-        ORDER BY published_at;";
-
-$results = mysqli_query($conn, $sql);
-
-if ($results === false){
-    echo mysqli_error($conn);
-} else {
-
-  $articles = mysqli_fetch_all($results, MYSQLI_ASSOC);
-}
 ?>
 
 <?php require 'includes/header.php'; ?>
 
-<?php if (isLoggedIn()): ?>
-
-  <p>You are logged in. =) <a href="logout.php">Log out</a> </p>
-  <p>  <a href="new-article.php">Add New Article</a> </p>
-
-<?php else:  ?>
-
-  <p>You are not logged in. =( <a href="login.php">Log in</a> </p>
-
-<?php endif; ?>
-
     <?php if (empty($articles)): ?>
       <p>No articles found.</p>
     <?php else: ?>
-    <ul>
+    <ul class="flex-item">
       <?php foreach ($articles as $article): ?>
       <li>
+        <img src="https://via.placeholder.com/150" />
         <article>
         <h2><a href="article.php?id=<?= $article['id']; ?>">  <!-- query string to
                                                               link to other pages-->

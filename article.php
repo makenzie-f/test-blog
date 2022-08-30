@@ -1,13 +1,11 @@
 <?php
 
-require 'includes/database.php';
-require 'includes/article.php';
-
-$conn = getDB();
+require 'includes/init.php';
+$conn = require 'includes/db.php';
 
 if ( isset($_GET['id'])) {
 
-    $article = getArticle($conn, $_GET['id']);
+    $article = Article::getByID($conn, $_GET['id']);
 
 } else {
   $article = null;
@@ -16,20 +14,16 @@ if ( isset($_GET['id'])) {
 ?>
 
 <?php require 'includes/header.php'; ?>
-
-    <?php if ($article === null): ?>
-      <p>Article not found.</p>
-    <?php else: ?>
+  <div class="admin-item">
+    <?php if ($article): ?>
         <article>
-        <h2><?= htmlspecialchars($article['title']);?></h2>
-        <p><?= htmlspecialchars($article['content']);?></p>
+        <h2><?= htmlspecialchars($article->title);?></h2>
+        <p><?= htmlspecialchars($article->content);?></p>
         </article>
-                        <!-- htmlspecialchars not needed when guaranteed int -->
-        <a href="edit-article.php?id=<?= $article['id']; ?>">Edit</a>
-                        <!-- links are GET - must use form for POST -->
-        <a href="delete-article.php?id=<?= $article['id']; ?>">Delete</a>
-        </form>
 
-  <?php endif; ?>
+      <?php else: ?>
+        <p>Article not found.</p>
 
+    <?php endif; ?>
+  </div>  </div>
   <?php require 'includes/footer.php'; ?>
