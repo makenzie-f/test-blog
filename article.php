@@ -1,25 +1,13 @@
 <?php
 
 require 'includes/database.php';
+require 'includes/article.php';
 
 $conn = getDB();
 
-if ( isset($_GET['id']) && is_numeric($_GET['id'])) {
+if ( isset($_GET['id'])) {
 
-$sql = "SELECT *
-        FROM article
-        WHERE id = " . $_GET['id'];
-
-// var_dump($sql); //to see what sql is delivered
-
-$results = mysqli_query($conn, $sql);
-
-if ($results === false){
-    echo mysqli_error($conn);
-} else {
-
-  $article = mysqli_fetch_assoc($results);
-}
+    $article = getArticle($conn, $_GET['id']);
 
 } else {
   $article = null;
@@ -33,9 +21,15 @@ if ($results === false){
       <p>Article not found.</p>
     <?php else: ?>
         <article>
-        <h2><?= $article['title'];?></h2>
-        <p><?= $article['content'];?></p>
+        <h2><?= htmlspecialchars($article['title']);?></h2>
+        <p><?= htmlspecialchars($article['content']);?></p>
         </article>
+                        <!-- htmlspecialchars not needed when guaranteed int -->
+        <a href="edit-article.php?id=<?= $article['id']; ?>">Edit</a>
+                        <!-- links are GET - must use form for POST -->
+        <a href="delete-article.php?id=<?= $article['id']; ?>">Delete</a>
+        </form>
+
   <?php endif; ?>
 
   <?php require 'includes/footer.php'; ?>
