@@ -1,6 +1,9 @@
 <?php
 
 require 'includes/database.php';
+require 'includes/auth.php';
+
+session_start();
 
 $conn = getDB();
 
@@ -20,6 +23,17 @@ if ($results === false){
 
 <?php require 'includes/header.php'; ?>
 
+<?php if (isLoggedIn()): ?>
+
+  <p>You are logged in. =) <a href="logout.php">Log out</a> </p>
+  <p>  <a href="new-article.php">Add New Article</a> </p>
+
+<?php else:  ?>
+
+  <p>You are not logged in. =( <a href="login.php">Log in</a> </p>
+
+<?php endif; ?>
+
     <?php if (empty($articles)): ?>
       <p>No articles found.</p>
     <?php else: ?>
@@ -29,10 +43,10 @@ if ($results === false){
         <article>
         <h2><a href="article.php?id=<?= $article['id']; ?>">  <!-- query string to
                                                               link to other pages-->
-              <?= $article['title'];?>
+              <?= htmlspecialchars($article['title']);?>
             </a>
         </h2>
-        <p><?= $article['content'];?></p>
+        <p><?= htmlspecialchars($article['content']);?></p>
         </article>
       </li>
     <?php endforeach; ?>
